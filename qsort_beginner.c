@@ -1,18 +1,21 @@
 // Compile with: clang -g qsort_beginner.c -o qsortb
 // Run with: ./qsortb
 
-#include <stdio.h> // Include file for standard input/output
-#include <stdlib.h> // so we can use atoi()
-#include <time.h>   // so we can use time_t and clock_gettime()
+#include <stdio.h>   // Include file for standard input/output
+#include <stdlib.h>  // so we can use atoi()
+#include <time.h>    // so we can use time_t and clock_gettime()
 
 #ifndef EXPERIMENT
-#define EXPERIMENT 0 // we will use this for the complexity experiments
+#define EXPERIMENT 0  // we will use this for the complexity experiments
 #endif
 
-// Input: A pointer to an array (i.e. the array itself points to the first index)
-//        The size of the array (Because we do not know how big the array is automatically)
+// Input: A pointer to an array (i.e. the array itself points to the first
+// index)
+//        The size of the array (Because we do not know how big the array is
+//        automatically)
 void printIntArray(int* array, unsigned int size) {
-    unsigned int i; // Note: 'unsigned int' is a datatype for storing positive integers.
+    unsigned int
+        i;  // Note: 'unsigned int' is a datatype for storing positive integers.
     for (i = 0; i < size; i++) {
         printf("%d ", array[i]);
     }
@@ -21,20 +24,27 @@ void printIntArray(int* array, unsigned int size) {
 
 // =============== Helper Functions ===============
 
-/* Put your helper function(s) in this section. 
-    
+/* Put your helper function(s) in this section.
+
 You may NOT write a swap function.
-In addition, inside your function(s) here, 
+In addition, inside your function(s) here,
     do not swap values in the array using the * operator (e.g. *a = *b).
   Instead, swap values using [] array notation.
-    
+
 Document your helper function(s) in the same style as
     the "sortIntegers" function below
 
-Your partition function should go here. Don't forget to add a docstring.
+Your partition and quicksort functions should go here. Don't forget to add a
+docstring.
+
+//  When Implementing quicksort here. Inside the sort choose
+    //  a static pivot point, meaning
+    // your pivot should always be at the same position in the array.
+
+    // do not edit the code in main in order to implement your sort.
 
 In addition, write one comment per line of code explaining how that line is
-  helping accomplish the goals of the "partition" function. 
+  helping accomplish the goals of the "partition" function.
 */
 
 // =============== Sort Function ===============
@@ -45,21 +55,14 @@ In addition, write one comment per line of code explaining how that line is
 //  - 'array' is a pointer to an integer address.
 //     This is the start of some 'contiguous block of memory' that we will sort.
 //  - 'size' tells us how big the array of data is we are sorting.
-// Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
+// Output: No value is returned, but 'array' should be modified to store a
+// sorted array of numbers.
 void sortIntegers(int* array, unsigned int size) {
-    // TODO: Implement quicksort here. Inside the sort choose
-    //  a static pivot point, meaning
-    // your pivot should always be at the same position in the array.
-
-    // you will answer questions in the written section about how to
-    // implement this sort when the pivot can change position.
-
-    // do not edit the code in main in order to implement your sort.
+    // call quicksort to sort array
 }
 
 // =============== Main Functions ===============
 int main(int argc, char* argv[]) {
-
 #if EXPERIMENT == 0
     // Some test data sets.
     int dataset1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -119,7 +122,8 @@ int main(int argc, char* argv[]) {
     // Get the time after we are done
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
 
-    double time_taken = (end.tv_nsec - begin.tv_nsec) / 1000000000.0 + (end.tv_sec - begin.tv_sec);
+    double time_taken = (end.tv_nsec - begin.tv_nsec) / 1000000000.0 +
+                        (end.tv_sec - begin.tv_sec);
     printf("Total time = %f seconds\n", time_taken);
 
     // Confirm the sort worked
